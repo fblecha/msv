@@ -20,20 +20,33 @@
   <build>
     <plugins>
       <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-jar-plugin</artifactId>
-	<configuration>
-	  <archive>
-	    <index>true</index>
-	  </archive>
-	  <manifest>
-	    <mainClass>com.sun.msv.generator.Driver</mainClass>
-	  </manifest>
-	  <addClasspath>true</addClasspath>
-	</configuration>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-jar-plugin</artifactId>
+	      <configuration>
+          <archive>
+            <index>true</index>
+          </archive>
+          <manifest>
+            <mainClass>com.sun.msv.generator.Driver</mainClass>
+          </manifest>
+          <addClasspath>true</addClasspath>
+        </configuration>
       </plugin>
-    </plugins>
-  </build>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+            <archive>
+                <manifest>
+                    <addClasspath>true</addClasspath>
+                    <mainClass>com.sun.msv.generator.Driver</mainClass>
+                </manifest>
+            </archive>
+            <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+        </configuration>
+      </plugin>
+    </plugins>  </build>
   <dependencies>
     <dependency>
       <groupId>com.sun.msv.datatype.xsd</groupId>
